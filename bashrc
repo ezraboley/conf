@@ -9,32 +9,21 @@ parse_git_branch() {
       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1] /'
 }
 
-
-# export PATH=/mnt/Mirror/src/scripts/bash:/usr/local/data/pbrodnick/doc_svn/bin:$PATH
 PS1="\[$(tput bold)\]\[$(tput setaf 3)\]\$(parse_git_branch)\[$(tput setaf 2)\]${debian_chroot:+($debian_chroot)}\u@\[$(tput setaf 6)\]\h\[$(tput setaf 7)\] \w \n \\$ \[$(tput sgr0)\]"
 
 alias ls='ls --color=auto'
 alias ll='ls -alh'
+alias l='ls --color=auto'
 
 alias ff='find . -name'
-alias gp='grep -riI'
+alias gp='grep --color=auto -riIn'
 set -o vi
-
-alias vxw='ssh -X eboley@vxworks1'
 
 export EDITOR=vim
 export USERNAME=eboley
-export PIP_EXTRA_INDEX_URL="https://pypi.xes-mad.com/simple"
-
-export PATH="$PATH:~/.arc_install/arcanist/bin/"
-
-ptitle() {
-    echo -ne "\033]0;$1\007"
-}
-
 
 # change directory to where the real work is done
-cd /mnt/ssd/users/eboley
+# cd /mnt/ssd/users/eboley
 
 # example of slick find exec usage
 #
@@ -55,6 +44,3 @@ alias sp_toggle="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-export EB_HOME=/mnt/home/eboley
-export EB_WORK=/mnt/pub/users/eboley

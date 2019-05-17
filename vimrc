@@ -1,4 +1,7 @@
 colorscheme elflord
+
+filetype plugin indent on
+
 set nowrap
 hi Search NONE
 set incsearch
@@ -16,7 +19,7 @@ set expandtab
 set textwidth=80
 set tabstop=4
 set shiftwidth=4
-
+set mouse=a
 
 set number
 set autoindent
@@ -25,6 +28,11 @@ set enc=latin1
 set guifont=system 
 
 set statusline=%-f%m\ %r\ %y%=BUFF=%n\ %l,%c
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
 
 " Phill's custom _vimrc Rev 2 -- first one was blown away :'(
 
