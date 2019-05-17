@@ -25,7 +25,7 @@ set number
 set autoindent
 
 set enc=latin1
-set guifont=system 
+set guifont=system
 
 set statusline=%-f%m\ %r\ %y%=BUFF=%n\ %l,%c
 
@@ -33,6 +33,14 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Highlights bad whitespace red
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Phill's custom _vimrc Rev 2 -- first one was blown away :'(
 
