@@ -15,7 +15,7 @@ alias ls='ls --color=auto'
 alias ll='ls -alh'
 alias l='ls --color=auto'
 
-alias ff='find . -name'
+alias ff='find . -iname'
 alias gp='grep --color=auto -riIn'
 set -o vi
 
